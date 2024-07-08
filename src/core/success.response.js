@@ -1,21 +1,13 @@
 "use strict";
 
-const StatusCode = {
-  OK: 200,
-  CREATED: 201,
-};
-
-const ReasonStatusCode = {
-  OK: "Success",
-  CREATED: "Created!",
-};
+import { StatusCodes, ReasonPhrases } from "../utils/httpStatusCode.js";
 
 class SuccessResponse {
   constructor({
     options = {},
     message,
-    statusCode = StatusCode.OK,
-    reasonStatusCode = ReasonStatusCode.OK,
+    statusCode = StatusCodes.OK,
+    reasonStatusCode = ReasonPhrases.OK,
     metadata = {},
   }) {
     this.message = !message ? reasonStatusCode : message;
@@ -39,12 +31,12 @@ class CREATED extends SuccessResponse {
   constructor({
     options = {},
     message,
-    statusCode = StatusCode.CREATED,
-    reasonStatusCode = ReasonStatusCode.CREATED,
+    statusCode = StatusCodes.CREATED,
+    reasonStatusCode = ReasonPhrases.CREATED,
     metadata = {},
   }) {
     super({ options, message, statusCode, reasonStatusCode, metadata });
   }
 }
 
-export { OK, CREATED };
+export { OK, CREATED, SuccessResponse };

@@ -5,7 +5,44 @@ Content-Type: application/json
 x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
 
 {
-    "name": "shoplah10",
-    "email": "shoplah10@gmail.com",
+    "name": "shoplah1",
+    "email": "shoplah1@gmail.com",
     "password": "123"
 }
+
+### Login
+POST {{url_dev}}/shop/login
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+
+{
+    "email": "shoplah@gmail.com",
+    "password": "123"
+}
+
+### Log out
+POST {{url_dev}}/shop/logout
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjhhNTg1MDcwOWU2NDhiOTcyYzU0NzgiLCJlbWFpbCI6InNob3BsYWgxQGdtYWlsLmNvbSIsImlhdCI6MTcyMDM0MjYwOCwiZXhwIjoxNzIwNTE1NDA4fQ.Tuv2-I1F1LEwEbpxjRiRmcoAB4PhpVUARmLMLiMnL-0
+x-client-id: 668a5850709e648b972c5478
+
+### Handle Refresh Token
+POST {{url_dev}}/shop/handleRefreshToken
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwMzUyMDY0LCJleHAiOjE3MjA1MjQ4NjR9.gW4RrZtISuZhH0cte4x16vjSI8B1ZYxQmiUbQpiVCug
+x-client-id: 6688f3c3faef8c441494d74c
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwMzUyMDY0LCJleHAiOjE3MjA5NTY4NjR9.Pxn_UXrs2mPvbRDnp_0ct5YojaoeqJg_W0Vwwfdz1MI"
+}
+
+### Handle Refresh Token V2
+POST {{url_dev}}/shop/handleRefreshTokenV2
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwMzUyMDY0LCJleHAiOjE3MjA1MjQ4NjR9.gW4RrZtISuZhH0cte4x16vjSI8B1ZYxQmiUbQpiVCug
+x-client-id: 6688f3c3faef8c441494d74c
+x-rtoken-id: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwNDI5OTcxLCJleHAiOjE3MjEwMzQ3NzF9.gBiBSNolXyvlasdptxGAK4qlhW7Nt0qTISqX_iNcJZI
+
