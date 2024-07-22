@@ -60,7 +60,6 @@ const authentication = asyncHandler(async (req, res, next) => {
 });
 
 const authenticationV2 = asyncHandler(async (req, res, next) => {
-  const refreshToken = req.headers[HEADER.REFRESH_TOKEN];
   const userId = req.headers[HEADER.CLIENT_ID];
   if (!userId) {
     throw new AuthorizedFailure("Invalid request");
@@ -69,14 +68,32 @@ const authenticationV2 = asyncHandler(async (req, res, next) => {
   if (!keyStore) {
     throw new NotFoundError("Not found keystore");
   }
+  if (req.headers[HEADER.REFRESH_TOKEN]) {
+    try {
+      const refreshToken = req.headers[HEADER.REFRESH_TOKEN];
+      const decodeUser = jwt.verify(refreshToken, keyStore.privateKey);
+      if (userId !== decodeUser.userId) {
+        throw new AuthorizedFailure("Invalid user id");
+      }
+      req.keyStore = keyStore;
+      req.user = decodeUser;
+      req.refreshToken = refreshToken;
+      return next();
+    } catch (error) {
+      throw error;
+    }
+  }
+  const accessToken = req.headers[HEADER.AUTHORIZATION];
+  if (!accessToken) {
+    throw new AuthorizedFailure("Invalid request");
+  }
   try {
-    const decodeUser = jwt.verify(refreshToken, keyStore.privateKey);
+    const decodeUser = jwt.verify(accessToken, keyStore.publicKey);
     if (userId !== decodeUser.userId) {
       throw new AuthorizedFailure("Invalid user id");
     }
     req.keyStore = keyStore;
     req.user = decodeUser;
-    req.refreshToken = refreshToken;
     return next();
   } catch (error) {
     throw error;

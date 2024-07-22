@@ -9,9 +9,13 @@ router.post("/shop/login", asyncHandler(accessController.login));
 
 // authentication
 // router.use(authentication);
+router.post(
+  "/shop/logout",
+  authentication,
+  asyncHandler(accessController.logout)
+);
 router.use(authenticationV2);
 //
-router.post("/shop/logout", asyncHandler(accessController.logout));
 router.post(
   "/shop/handleRefreshToken",
   asyncHandler(accessController.handleRefreshToken)

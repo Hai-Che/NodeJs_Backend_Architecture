@@ -42,7 +42,151 @@ x-client-id: 6688f3c3faef8c441494d74c
 POST {{url_dev}}/shop/handleRefreshTokenV2
 Content-Type: application/json
 x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwMzUyMDY0LCJleHAiOjE3MjA1MjQ4NjR9.gW4RrZtISuZhH0cte4x16vjSI8B1ZYxQmiUbQpiVCug
 x-client-id: 6688f3c3faef8c441494d74c
-x-rtoken-id: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwNDI5OTcxLCJleHAiOjE3MjEwMzQ3NzF9.gBiBSNolXyvlasdptxGAK4qlhW7Nt0qTISqX_iNcJZI
+x-rtoken-id: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwNDM5MjAwLCJleHAiOjE3MjEwNDQwMDB9.2CtOiTtEDfIUmUGQBFP8uK2EszAbXOi6snByiBa_Ky8
 
+### Create product cloth
+POST {{url_dev}}product
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwOTM0MDk3LCJleHAiOjE3MjExMDY4OTd9.SYKjWcKQE67HOI_j8EgmQPB2-tGeRAnKMqIPVYeY1W8
+x-client-id: 6688f3c3faef8c441494d74c
+
+{
+    "product_name": "Trouser",
+    "product_thumb": "product thumb",
+    "product_description": "High quality",
+    "product_price": 50,
+    "product_quantity": 100,
+    "product_type": "Clothing",
+    "product_attributes": {
+        "brand": "Lele",
+        "size": "L",
+        "material": "Cotton"
+    }
+}
+
+### Create product electronic
+POST {{url_dev}}product
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwNDM5MjMyLCJleHAiOjE3MjA2MTIwMzJ9.p5M8a7S0wJZLTZyT5LA5CKDgVpU7hLE33ASWo1KElq8
+x-client-id: 6688f3c3faef8c441494d74c
+
+{
+    "product_name": "Iphone 11",
+    "product_description": "High-end",
+    "product_price": 100,
+    "product_quantity": 1,
+    "product_thumb": "product thumb",
+    "product_type": "Electronic",
+    "product_attributes": {
+        "manufacturer": "Apple",
+        "model": "Ip11",
+        "color": "Dark green"
+    }
+}
+### Create product furniture
+POST {{url_dev}}product
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwNDM5MjMyLCJleHAiOjE3MjA2MTIwMzJ9.p5M8a7S0wJZLTZyT5LA5CKDgVpU7hLE33ASWo1KElq8
+x-client-id: 6688f3c3faef8c441494d74c
+
+{
+    "product_name": "Desk",
+    "product_description": "High quality",
+    "product_price": 50,
+    "product_quantity": 5,
+    "product_thumb": "product thumb",
+    "product_type": "Furniture",
+    "product_attributes": {
+        "brand": "Wellknown",
+        "size": "L",
+        "material": "Wood"
+    }
+}
+
+### Get drafts list
+GET {{url_dev}}product/drafts/all
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwNjkwNjIwLCJleHAiOjE3MjA4NjM0MjB9.IbCLv-MNLdLZJ8f-FLv7W4m5mxjnXquvGLdeYoo7Q-E
+x-client-id: 6688f3c3faef8c441494d74c
+
+### Get published list
+GET {{url_dev}}product/published/all
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwNjkwNjIwLCJleHAiOjE3MjA4NjM0MjB9.IbCLv-MNLdLZJ8f-FLv7W4m5mxjnXquvGLdeYoo7Q-E
+x-client-id: 6688f3c3faef8c441494d74c
+
+### Publish Product
+POST {{url_dev}}product/publish/668fa90aebef6b38a1db4805
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwNjkwNjIwLCJleHAiOjE3MjA4NjM0MjB9.IbCLv-MNLdLZJ8f-FLv7W4m5mxjnXquvGLdeYoo7Q-E
+x-client-id: 6688f3c3faef8c441494d74c
+
+### Search Product
+GET {{url_dev}}product/search/11
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+
+### Get all product
+GET {{url_dev}}product/
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+
+### Get Product
+GET {{url_dev}}product/668fa90aebef6b38a1db4805
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+
+### Create product cloth
+PATCH {{url_dev}}product/668fa90aebef6b38a1db4805
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwOTM0MDk3LCJleHAiOjE3MjExMDY4OTd9.SYKjWcKQE67HOI_j8EgmQPB2-tGeRAnKMqIPVYeY1W8
+x-client-id: 6688f3c3faef8c441494d74c
+
+{
+    "product_name": "New_Hanni",
+    "product_type": "Clothing",
+    "product_attributes": {
+        "brand": "Levia"
+    }
+}
+
+### Create discount code
+POST {{url_dev}}discount
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIxMjAzNDEyLCJleHAiOjE3MjEzNzYyMTJ9.pB2W4Wl32Veaj5eHfTBLUOu6paSAv9rsXeQMRmjIXaY
+x-client-id: 6688f3c3faef8c441494d74c
+
+{
+    "name": "name fixed amount",
+    "description": "desc",
+    "type": "percentage",
+    "value": 20,
+    "max_value": 3000,
+    "code": "SHOP-1122",
+    "start_date": "2024-04-15 09:00:00",
+    "end_date": "2024-08-15 09:00:00",
+    "max_uses": 100,
+    "uses_count": 0,
+    "users_used": [],
+    "max_uses_per_user": 1,
+    "min_order_value": 100,
+    "create_by": {},
+    "shopId": "",
+    "is_active": true,
+    "applies_to": "specific",
+    "product_ids": ["668e5ad86fcba09c87b4bfc0", "668fa90aebef6b38a1db4805"]
+}
+
+### List product code
+GET {{url_dev}}discount/list_product_code?code=SHOP-1122&shopId=6688f3c3faef8c441494d74c&limit=50&page=1
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
