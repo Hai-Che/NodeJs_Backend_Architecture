@@ -1,7 +1,11 @@
 "use strict";
 import { Types } from "mongoose";
 import productModel from "../product.model.js";
-import { getSelectData, unGetSelectData } from "../../utils/index.js";
+import {
+  convertToObjectIdMongoDB,
+  getSelectData,
+  unGetSelectData,
+} from "../../utils/index.js";
 
 const findAllDraftsForShop = async ({ query, limit, skip }) => {
   return await queryProduct({ query, limit, skip });
@@ -28,6 +32,14 @@ const findProduct = async ({ product_id, unSelect }) => {
   return await productModel.product
     .findById(product_id)
     .select(unGetSelectData(unSelect));
+};
+
+const findProductById = async (productId) => {
+  return await productModel.product
+    .findOne({
+      _id: convertToObjectIdMongoDB(productId),
+    })
+    .lean();
 };
 
 const updateProductById = async ({
@@ -101,4 +113,5 @@ export {
   findAllProducts,
   findProduct,
   updateProductById,
+  findProductById,
 };

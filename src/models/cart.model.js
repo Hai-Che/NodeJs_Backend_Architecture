@@ -27,7 +27,7 @@ const cartSchema = new mongoose.Schema(
     },
   },
   {
-    timeseries: {
+    timestamps: {
       createdAt: "createdOn",
       updatedAt: "modifiedOn",
     },
