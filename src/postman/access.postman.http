@@ -190,3 +190,29 @@ x-client-id: 6688f3c3faef8c441494d74c
 GET {{url_dev}}discount/list_product_code?code=SHOP-1122&shopId=6688f3c3faef8c441494d74c&limit=50&page=1
 Content-Type: application/json
 x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+
+### List discount by shop
+GET {{url_dev}}discount?shopId=6688f3c3faef8c441494d74c&limit=50&page=1
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIxODg3NDgzLCJleHAiOjE3MjIwNjAyODN9.ZkSRhWZGQajzF_RCZLoHLHfetWYRhUgvyyiINV19wi0
+x-client-id: 6688f3c3faef8c441494d74c
+
+### Discount amount
+POST {{url_dev}}discount/amount
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIxODg3NDgzLCJleHAiOjE3MjIwNjAyODN9.ZkSRhWZGQajzF_RCZLoHLHfetWYRhUgvyyiINV19wi0
+x-client-id: 6688f3c3faef8c441494d74c
+
+{
+    "codeId": "SHOP-1122",
+    "userId": 2,
+    "shopId": "6688f3c3faef8c441494d74c",
+    "products": [{
+        "productId": "668fa90aebef6b38a1db4805",
+        "quantity": 5,
+        "price": 120000
+    }
+    ]
+}

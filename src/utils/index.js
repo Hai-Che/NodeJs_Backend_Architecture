@@ -8,7 +8,7 @@ const getInfoData = ({ fields = [], object = {} }) => {
   return pick(object, fields);
 };
 const convertToObjectIdMongoDB = (id) => {
-  new Types.ObjectId(id);
+  return new Types.ObjectId(id);
 };
 
 const getSelectData = (select = []) => {
