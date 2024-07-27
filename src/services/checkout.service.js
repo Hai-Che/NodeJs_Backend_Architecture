@@ -3,6 +3,8 @@ import { BadRequestError, NotFoundError } from "../core/error.response.js";
 import { findCartById } from "../models/repositories/cart.repo.js";
 import { checkProductByServer } from "../models/repositories/product.repo.js";
 import DiscountService from "./discount.service.js";
+import { acquireLock, releaseLock } from "./redis.service.js";
+import orderModel from "../models/order.model.js";
 
 class CheckoutService {
   static async checkoutReview({ userId, cartId, shop_order_ids }) {
@@ -61,6 +63,45 @@ class CheckoutService {
       shop_order_ids,
       checkout_order,
     };
+  }
+  static async orderByUser({
+    shop_order_ids,
+    cartId,
+    userId,
+    user_address = {},
+    user_payment = {},
+  }) {
+    const { new_shop_order_ids, checkout_order } = await this.checkoutReview({
+      userId,
+      cartId,
+      shop_order_ids,
+    });
+    const products = new_shop_order_ids.flatMap((order) => order.item_products);
+    const acquireProduct = [];
+    for (let i = 0; i < products.length; i++) {
+      const { productId, quantity } = products[i];
+      const keyLock = await acquireLock(productId, cartId, quantity);
+      acquireProduct.push(keyLock ? true : false);
+      if (keyLock) {
+        await releaseLock(keyLock);
+      }
+    }
+    if (acquireProduct.includes(false)) {
+      throw new BadRequestError(
+        "Some product has been updated, please turn back to your cart"
+      );
+    }
+    const newOrder = await orderModel.create({
+      order_userId: userId,
+      order_checkout: checkout_order,
+      order_shipping: user_address,
+      order_payment: user_payment,
+      order_products: new_shop_order_ids,
+    });
+
+    if (newOrder) {
+    }
+    return newOrder;
   }
 }
 
