@@ -299,3 +299,17 @@ x-client-id: 6688f3c3faef8c441494d74c
         }]
     }]
 }
+
+### Create comment
+POST {{url_dev}}comment
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIyNTAxODUyLCJleHAiOjE3MjI2NzQ2NTJ9.Euj3AMNeHXnYMnjXEhzUlwrL-DJbG5RH4liiZKB8hh0
+x-client-id: 6688f3c3faef8c441494d74c
+
+{
+    "productId": "668fa90aebef6b38a1db4805",
+    "userId": 1001,
+    "content": "comment 1",
+    "parentCommentId": null
+}

@@ -2,12 +2,12 @@
 
 import redis from "redis";
 import { promisify } from "util";
-import { reservationInventory } from "../models/repositories/inventory.repo";
+import { reservationInventory } from "../models/repositories/inventory.repo.js";
 
 const redisClient = redis.createClient();
 
-const pexpire = promisify(redisClient.pexpire).bind(redisClient);
-const setnxAsync = promisify(redisClient.setnx).bind(redisClient);
+const pexpire = promisify(redisClient.pExpire).bind(redisClient);
+const setnxAsync = promisify(redisClient.setNX).bind(redisClient);
 
 const acquireLock = async (productId, cartId, quantity) => {
   const key = `lock_v2024_${productId}`;
