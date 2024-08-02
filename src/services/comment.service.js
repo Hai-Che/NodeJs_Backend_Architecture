@@ -2,6 +2,7 @@
 
 import { BadRequestError, NotFoundError } from "../core/error.response.js";
 import commentModel from "../models/comment.model.js";
+import { findProductById } from "../models/repositories/product.repo.js";
 import { convertToObjectIdMongoDB } from "../utils/index.js";
 
 class CommentService {
@@ -107,6 +108,47 @@ class CommentService {
         comment_left: 1,
       });
     return comments;
+  }
+
+  static async deleteComment({ productId, commentId }) {
+    const product = await findProductById(productId);
+    if (!product) {
+      throw new NotFoundError("Product not found");
+    }
+    const comment = await commentModel.findById(commentId);
+    if (!comment) {
+      throw new NotFoundError("Comment not found");
+    }
+    const leftValue = comment.comment_left;
+    const rightValue = comment.comment_right;
+    const width = rightValue - leftValue + 1;
+    await commentModel.deleteMany({
+      comment_productId: convertToObjectIdMongoDB(productId),
+      comment_left: { $gte: leftValue, $lte: rightValue },
+    });
+    await commentModel.updateMany(
+      {
+        comment_productId: convertToObjectIdMongoDB(productId),
+        comment_left: { $gt: rightValue },
+      },
+      {
+        $inc: {
+          comment_left: -width,
+        },
+      }
+    );
+    await commentModel.updateMany(
+      {
+        comment_productId: convertToObjectIdMongoDB(productId),
+        comment_right: { $gt: rightValue },
+      },
+      {
+        $inc: {
+          comment_right: -width,
+        },
+      }
+    );
+    return true;
   }
 }
 
