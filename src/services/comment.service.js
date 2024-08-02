@@ -63,6 +63,51 @@ class CommentService {
     await comment.save();
     return comment;
   }
+
+  static async getCommentsByParentId({
+    productId,
+    parentCommentId = null,
+    limit = 50,
+    offset = 0,
+  }) {
+    if (parentCommentId) {
+      const parent = await commentModel.findById(parentCommentId);
+      if (!parent) {
+        throw new NotFoundError("Parent comment not found");
+      }
+      const comments = await commentModel
+        .find({
+          comment_productId: convertToObjectIdMongoDB(productId),
+          comment_left: { $gt: parent.comment_left },
+          comment_right: { $lte: parent.comment_right },
+        })
+        .select({
+          comment_left: 1,
+          comment_right: 1,
+          comment_parentId: 1,
+          comment_content: 1,
+        })
+        .sort({
+          comment_left: 1,
+        });
+      return comments;
+    }
+    const comments = await commentModel
+      .find({
+        comment_productId: convertToObjectIdMongoDB(productId),
+        comment_parentId: parentCommentId,
+      })
+      .select({
+        comment_left: 1,
+        comment_right: 1,
+        comment_parentId: 1,
+        comment_content: 1,
+      })
+      .sort({
+        comment_left: 1,
+      });
+    return comments;
+  }
 }
 
 export default CommentService;
