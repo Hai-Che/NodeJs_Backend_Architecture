@@ -70,11 +70,11 @@ x-client-id: 6688f3c3faef8c441494d74c
 POST {{url_dev}}product
 Content-Type: application/json
 x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIwNDM5MjMyLCJleHAiOjE3MjA2MTIwMzJ9.p5M8a7S0wJZLTZyT5LA5CKDgVpU7hLE33ASWo1KElq8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIyNTAxODUyLCJleHAiOjE3MjI2NzQ2NTJ9.Euj3AMNeHXnYMnjXEhzUlwrL-DJbG5RH4liiZKB8hh0
 x-client-id: 6688f3c3faef8c441494d74c
 
 {
-    "product_name": "Iphone 11",
+    "product_name": "Iphone 69",
     "product_description": "High-end",
     "product_price": 100,
     "product_quantity": 1,
@@ -82,7 +82,7 @@ x-client-id: 6688f3c3faef8c441494d74c
     "product_type": "Electronic",
     "product_attributes": {
         "manufacturer": "Apple",
-        "model": "Ip11",
+        "model": "Ip69",
         "color": "Dark green"
     }
 }
@@ -330,5 +330,12 @@ x-client-id: 6688f3c3faef8c441494d74c
 
 {
     "productId": "668fa90aebef6b38a1db4805",
-    "commentId": "66ab526b904baeafa2c28e0d"
+    "commentId": "66ab520d904baeafa2c28df8"
 }
+
+### Get notifications
+GET {{url_dev}}notification
+Content-Type: application/json
+x-api-key: 895ecdf54bd5bdd057db65b231f02416f02c373ef9cb088ac0c6846b4d6fbb28d040d3dfacff682e10c24e4abad1bc8d521f142a59ee64310178924847d345e8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg4ZjNjM2ZhZWY4YzQ0MTQ5NGQ3NGMiLCJlbWFpbCI6InNob3BsYWhAZ21haWwuY29tIiwiaWF0IjoxNzIyNTAxODUyLCJleHAiOjE3MjI2NzQ2NTJ9.Euj3AMNeHXnYMnjXEhzUlwrL-DJbG5RH4liiZKB8hh0
+x-client-id: 6688f3c3faef8c441494d74c

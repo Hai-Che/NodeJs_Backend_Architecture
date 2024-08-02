@@ -17,6 +17,7 @@ import {
   updateNestedObjectParser,
 } from "../utils/index.js";
 import { insertInventory } from "../models/repositories/inventory.repo.js";
+import { pushNotiToSystem } from "./notification.service.js";
 class ProductFactory {
   // static async createProduct(type, payload) {
   //   switch (type) {
@@ -129,6 +130,17 @@ class Product {
         stock: this.product_quantity,
       });
     }
+    pushNotiToSystem({
+      type: "SHOP-001",
+      receivedId: 1,
+      senderId: this.product_shop,
+      options: {
+        product_name: this.product_name,
+        shop_name: this.product_shop,
+      },
+    })
+      .then((rs) => console.log(rs))
+      .catch(console.error);
     return newProduct;
   }
   async updateProduct(product_id, bodyUpdate) {
