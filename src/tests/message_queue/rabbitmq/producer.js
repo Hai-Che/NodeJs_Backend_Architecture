@@ -1,5 +1,5 @@
 import amqp from "amqplib";
-const messages = "Hello rabbitmq";
+const messages = "Resend new message";
 
 const runProducer = async () => {
   try {

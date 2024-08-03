@@ -30,4 +30,26 @@ const connectToRabbitMQForTest = async () => {
   }
 };
 
-module.exports = { connectToRabbitMQForTest };
+const consumerQueue = async (queueName, channel) => {
+  try {
+    await channel.assertQueue(queueName, { durable: true });
+    console.log(`Waiting for message ...`);
+    channel.consume(
+      queueName,
+      (msg) => {
+        console.log(
+          `Received message from queue: ${queueName} with content: `,
+          msg.content.toString()
+        );
+      },
+      {
+        noAck: true,
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+module.exports = { connectToRabbitMQ, connectToRabbitMQForTest, consumerQueue };
