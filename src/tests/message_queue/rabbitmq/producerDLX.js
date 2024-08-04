@@ -1,9 +1,9 @@
 import amqp from "amqplib";
 
-const log = console.log;
-console.log = function () {
-  log.apply(console, [new Date()].concat(arguments));
-};
+// const log = console.log;
+// console.log = function () {
+//   log.apply(console, [new Date()].concat(arguments));
+// };
 
 const runProducer = async () => {
   try {
