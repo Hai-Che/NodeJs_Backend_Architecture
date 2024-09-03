@@ -7,6 +7,7 @@ const uploadFileFromUrl = async () => {
     const folderName = "product/shopId",
       newFileName = "testUploadByUrl";
     const result = await cloudinary.uploader.upload(image_url, {
+      puvlic_id: newFileName,
       folder: folderName,
     });
     console.log(result);
@@ -15,7 +16,7 @@ const uploadFileFromUrl = async () => {
   }
 };
 
-const uploadFileThumb = async ({ path, folderName = "product/8409" }) => {
+const uploadImageFromLocal = async ({ path, folderName = "product/8409" }) => {
   try {
     const result = await cloudinary.uploader.upload(path, {
       public_id: "thumb",
@@ -36,4 +37,33 @@ const uploadFileThumb = async ({ path, folderName = "product/8409" }) => {
   }
 };
 
-export { uploadFileFromUrl, uploadFileThumb };
+const uploadImageFromLocalFiles = async ({
+  files,
+  folderName = "product/8409",
+}) => {
+  try {
+    if (!files.length) {
+      return;
+    }
+    const uploadedUrls = [];
+    for (const file of files) {
+      const result = await cloudinary.uploader.upload(file.path, {
+        folder: folderName,
+      });
+      uploadedUrls.push({
+        image_url: result.secure_url,
+        shopId: 8409,
+        thumb_url: await cloudinary.url(result.public_id, {
+          height: 100,
+          width: 100,
+          format: "jpg",
+        }),
+      });
+    }
+    return uploadedUrls;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export { uploadFileFromUrl, uploadImageFromLocal, uploadImageFromLocalFiles };

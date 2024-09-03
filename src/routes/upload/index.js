@@ -11,7 +11,12 @@ router.post("/product", asyncHandler(uploadController.uploadFileFromUrl));
 router.post(
   "/product/thumb",
   uploadDisk.single("file"),
-  asyncHandler(uploadController.uploadFileThumb)
+  asyncHandler(uploadController.uploadImageFromLocal)
+);
+router.post(
+  "/product/multiple",
+  uploadDisk.array("files", 3),
+  asyncHandler(uploadController.uploadImageFromLocalFiles)
 );
 
 export default router;
