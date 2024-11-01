@@ -1,5 +1,10 @@
 "use strict";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import {
+  S3Client,
+  PutObjectCommand,
+  GetObjectCommand,
+  DeleteObjectCommand,
+} from "@aws-sdk/client-s3";
 
 const s3Config = {
   region: process.env.AWS_BUCKET_REGION,
@@ -10,4 +15,4 @@ const s3Config = {
 };
 
 const s3 = new S3Client(s3Config);
-export { s3, PutObjectCommand };
+export { s3, PutObjectCommand, GetObjectCommand, DeleteObjectCommand };
