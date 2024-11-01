@@ -1,7 +1,7 @@
 import express from "express";
 import uploadController from "../../controllers/upload.controller.js";
 import { asyncHandler } from "../../helpers/asyncHandler.js";
-import { uploadDisk } from "../../configs/multer.config.js";
+import { uploadDisk, uploadMemory } from "../../configs/multer.config.js";
 // import { authenticationV2 } from "../../auth/authUtils.js";
 const router = express.Router();
 
@@ -17,6 +17,12 @@ router.post(
   "/product/multiple",
   uploadDisk.array("files", 3),
   asyncHandler(uploadController.uploadImageFromLocalFiles)
+);
+
+router.post(
+  "/product/bucket",
+  uploadMemory.single("file"),
+  asyncHandler(uploadController.uploadImageFromLocalS3)
 );
 
 export default router;

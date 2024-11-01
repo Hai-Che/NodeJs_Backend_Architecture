@@ -1,5 +1,7 @@
 "use strict";
 import cloudinary from "../configs/cloudinary.config.js";
+import { s3, PutObjectCommand } from "../configs/s3.config.js";
+import crypto from "crypto";
 // Upload by url
 const uploadFileFromUrl = async () => {
   try {
@@ -66,4 +68,34 @@ const uploadImageFromLocalFiles = async ({
   }
 };
 
-export { uploadFileFromUrl, uploadImageFromLocal, uploadImageFromLocalFiles };
+const uploadImageFromLocalS3 = async ({ file }) => {
+  try {
+    const randomImageName = () => crypto.randomBytes(16).toString("hex");
+    const command = new PutObjectCommand({
+      Bucket: process.env.AWS_BUCKET_NAME,
+      Key: randomImageName(),
+      Body: file.buffer,
+      ContentType: "image/jpeg",
+    });
+    const result = await s3.send(command);
+    // return {
+    //   image_url: result.secure_url,
+    //   shopId: 8409,
+    //   thumb_url: await cloudinary.url(result.public_id, {
+    //     height: 100,
+    //     width: 100,
+    //     format: "jpg",
+    //   }),
+    // };
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export {
+  uploadFileFromUrl,
+  uploadImageFromLocal,
+  uploadImageFromLocalFiles,
+  uploadImageFromLocalS3,
+};

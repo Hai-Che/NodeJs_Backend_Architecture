@@ -3,6 +3,7 @@ import {
   uploadFileFromUrl,
   uploadImageFromLocal,
   uploadImageFromLocalFiles,
+  uploadImageFromLocalS3,
 } from "../services/upload.service.js";
 
 import { SuccessResponse } from "../core/success.response.js";
@@ -23,6 +24,18 @@ class UploadController {
       message: "uploadFileThumb success",
       metadata: await uploadImageFromLocal({
         path: file.path,
+      }),
+    }).send(res);
+  };
+  uploadImageFromLocalS3 = async (req, res, next) => {
+    const { file } = req;
+    if (!file) {
+      throw new BadRequestError("File missing");
+    }
+    new SuccessResponse({
+      message: "upload successfully use S3",
+      metadata: await uploadImageFromLocalS3({
+        file,
       }),
     }).send(res);
   };

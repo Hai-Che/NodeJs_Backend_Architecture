@@ -7,7 +7,6 @@ import { createTokenPair, verifyJWT } from "../auth/authUtils.js";
 import { getInfoData } from "../utils/index.js";
 import { AuthorizedFailure, BadRequestError } from "../core/error.response.js";
 import { findByEmail } from "./shop.service.js";
-import { access } from "node:fs";
 const ROLESHOP = {
   SHOP: "SHOP",
   WRITER: "WRITER",
